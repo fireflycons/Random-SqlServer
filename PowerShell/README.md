@@ -25,10 +25,10 @@ $instance = '$(ESCAPE_NONE(SRVR))'
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo") | Out-Null
 
 # Connect to the instance
-$server = New-Object Microsoft.SqlServer.Management.Smo.Server ($instance)
+$smoServer = New-Object Microsoft.SqlServer.Management.Smo.Server ($instance)
 ```
 
-For those who understand object-oriented programming, SMO is arranged as an object graph. This object graph more or less matches the tree you see in Object Explorer within SSMS, i.e. `$server.Databases` will return a collection of SMO database objects, one for each database on the instance.
+For those who understand object-oriented programming, SMO is arranged as an object graph. This object graph more or less matches the tree you see in Object Explorer within SSMS, i.e. `$smoServer.Databases` will return a collection of SMO database objects, one for each database on the instance.
 
 Every SMO object has a `Parent` property for backward navigation. If you have a SMO database object, it's parent is the server object, and similarly a table object's parent is the containing database object.
 
